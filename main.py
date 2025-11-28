@@ -1,3 +1,5 @@
+# An implementation of a simple k-NN classifier
+
 class Input:
     def __init__(self, p1, p2, p3, res=None):
         self.p1 = p1
