@@ -59,6 +59,12 @@ print(classify(Input(50, 50, 50)))  # Expected output: "res2"
 print(classify(Input(70, 33, 59)))  # Expected output: "res3"
 
 # Testing with dataset:
+correct = 0
+
 for data in dataset:
     predicted = classify(Input(data.p1, data.p2, data.p3))
     print(f"Actual: {data.response}, Predicted: {predicted}")
+    if predicted == data.response:
+        correct += 1
+
+print(f"Accuracy: {correct}/{len(dataset)} = {correct/len(dataset)*100:.2f}%")
