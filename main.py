@@ -1,5 +1,6 @@
 # An implementation of a simple k-NN classifier
 
+# Data type
 class Input:
     def __init__(self, p1, p2, p3, res=None):
         self.p1 = p1
@@ -10,6 +11,7 @@ class Input:
     def distance_to(self, other):
         return ((self.p1 - other.p1) ** 2 + (self.p2 - other.p2) ** 2 + (self.p3 - other.p3) ** 2) ** 0.5
 
+# Dataset
 dataset = [
     # --- Cluster 1 (around ~[10,10,10]) → res1 ---
     Input(10, 11, 9, "res1"),
@@ -33,6 +35,7 @@ dataset = [
     Input(90, 19, 67, "res3")
 ]
 
+# k-NN Classifier
 def classify(inp):
     correct_res = ""
     nearest = []
@@ -53,12 +56,12 @@ def classify(inp):
     correct_res = max(votes, key=votes.get)
     return correct_res
 
-# Example usage:
+# Testing
 print(classify(Input(10, 10, 10)))  # Expected output: "res1"
 print(classify(Input(50, 50, 50)))  # Expected output: "res2"
 print(classify(Input(70, 33, 59)))  # Expected output: "res3"
 
-# Testing with dataset:
+# Testing with dataset
 correct = 0
 
 for data in dataset:
