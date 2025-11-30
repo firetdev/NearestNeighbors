@@ -33,11 +33,11 @@ dataset = [
     Input(90, 19, 67, "res3")
 ]
 
-def classify(input):
-    correctRes = ""
+def classify(inp):
+    correct_res = ""
     nearest = []
     for i in dataset:
-        dist = input.distance_to(i)
+        dist = inp.distance_to(i)
         if len(nearest) < 5:
             nearest.append((dist, i.response))
         else:
@@ -50,8 +50,8 @@ def classify(input):
     for dist, res in nearest:
         votes[res] = votes.get(res, 0) + 1
     
-    correctRes = max(votes, key=votes.get)
-    return correctRes
+    correct_res = max(votes, key=votes.get)
+    return correct_res
 
 # Example usage:
 print(classify(Input(10, 10, 10)))  # Expected output: "res1"
